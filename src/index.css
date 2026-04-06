@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  body {
+    /* Explicitly use configured sans font (El Messiri as primary) */
+    font-family: theme('fontFamily.sans');
+    background-color: theme('colors.primary');
+    color: theme('colors.secondary');
+    scroll-behavior: smooth;
+    @apply transition-colors duration-300;
+  }
+
+  h1,h2,h3 {
+    /* Use heading font (El Messiri) for strong headings */
+    font-family: theme('fontFamily.heading');
+  }
+
+  /* Apply Arabic font stack whenever the document is in RTL (Arabic) */
+  html[dir='rtl'] {
+    font-family: theme('fontFamily.arabic');
+    /* ensure headings also inherit the Arabic stack for consistent feel */
+    --heading-font: theme('fontFamily.arabic');
+  }
+
+  /* Language switch subtle fade animation */
+  .lang-transition {
+    transition: opacity .18s ease-in-out;
+  }
+
+  .lang-fading {
+    opacity: .6;
+  }
+
+  /* Reveal on scroll helpers */
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(16px);
+    will-change: opacity, transform;
+    transition: opacity .6s cubic-bezier(.2,.9,.2,1), transform .6s cubic-bezier(.2,.9,.2,1);
+  }
+
+  .reveal-active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-img {
+    transform: translateY(6px) scale(1.02);
+    transition: transform .9s cubic-bezier(.2,.9,.2,1);
+  }
+
+  .reveal-active .reveal-img,
+  .reveal-img.reveal-active {
+    transform: none;
+  }
+
+  /* make white backgrounds beige to match new palette */
+  .bg-white {
+    background-color: theme('colors.secondary');
+    background-color: theme('colors.primary');
+  }
+
+  /* Hero decorative styles */
+  .hero-container {
+    position: relative;
+    overflow: visible;
+  }
+
+  .hero-decor {
+    position: absolute;
+    inset: auto -6rem -4rem auto;
+    width: 36rem;
+    height: 36rem;
+    border-radius: 9999px;
+    background: radial-gradient(closest-side, rgba(99,102,241,0.12), transparent 40%);
+    filter: blur(30px);
+    transform: translate3d(0,0,0);
+    will-change: transform, opacity;
+    opacity: .9;
+    animation: float 9s ease-in-out infinite;
+    pointer-events: none;
+    transition: transform .45s cubic-bezier(.2,.9,.2,1);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.0), rgba(0,0,0,0.03));
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.03); }
+    100% { transform: translateY(0) scale(1); }
+  }
+} 
