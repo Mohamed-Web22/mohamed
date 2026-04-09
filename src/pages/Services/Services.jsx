@@ -5,10 +5,16 @@ Play, Star, ChevronDown, ArrowRight, Send, ThumbsUp, Users, Award,
   Facebook, Instagram, Youtube, Linkedin
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext.jsx';
-import imag1 from '../../assets/imag1.jpg';
-import runn from '../../assets/runn.jpg';
-import readImg from '../../assets/read.jpg';
-import redImg from '../../assets/red.jpg';
+// Images moved to public/images/
+// import imag1 from '../../assets/imag1.jpg';
+// import runn from '../../assets/runn.jpg';
+// import readImg from '../../assets/read.jpg';
+// import redImg from '../../assets/red.jpg';
+
+const imag1 = '/images/imag1.jpg';
+const runn = '/images/runn.jpg';
+const readImg = '/images/read.jpg';
+const redImg = '/images/red.jpg';
 
 const TelegramIcon = () => (
   <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
