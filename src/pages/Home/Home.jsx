@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import StarsBackground from '../../components/StarsBackground.jsx';
 import { useRef, useEffect, useState } from 'react';
 import { motion as Motion, LazyMotion, domAnimation, useInView, AnimatePresence } from 'framer-motion';
 import {
@@ -301,7 +302,6 @@ const TestimonialsCarousel = ({ items }) => {
             </Motion.div>
             <div className="text-start">
               <p className="font-bold text-white text-base sm:text-lg">{items[currentIndex].name}</p>
-              <p className="text-[#d2a517] text-sm">{items[currentIndex].role}</p>
             </div>
           </div>
         </Motion.div>
@@ -344,224 +344,6 @@ const TestimonialsCarousel = ({ items }) => {
   );
 };
 
-// Contact Section
-const ContactSection = ({ lang }) => {
-  const [ref, inView] = useScrollAnimation();
-  const contactMethods = [
-    { icon: Phone, title: lang === 'ar' ? 'اتصل بنا' : 'Call Us', value: '+249 123 456 789', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
-    { icon: Mail, title: lang === 'ar' ? 'راسلنا' : 'Email Us', value: 'info@qimamsudanese.com', color: 'from-[#414d76] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#414d76]' },
-    { icon: MapPin, title: lang === 'ar' ? 'موقعنا' : 'Visit Us', value: lang === 'ar' ? 'الخرطوم، السودان' : 'Khartoum, Sudan', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
-    { icon: MessageCircle, title: lang === 'ar' ? 'واتساب' : 'WhatsApp', value: '+249 123 456 789', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
-  ];
-  
-  return (
-    <section id="contact" className="py-16 sm:py-20 bg-gradient-to-b from-[#0f2145] via-[#141f3b] to-[#0f2145] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
-      
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <Motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-12"
-        >
-          <Motion.span 
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-[#d2a517]/20 to-[#414d76]/20 text-[#d2a517] text-sm font-semibold rounded-full mb-4 border border-[#d2a517]/30"
-          >
-            {lang === 'ar' ? '📞 تواصل معنا' : '📞 Contact Us'}
-          </Motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">{lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}</h2>
-          <p className="text-[#e9efff]/80 text-base sm:text-lg max-w-2xl mx-auto">{lang === 'ar' ? 'نحن هنا لمساعدتك! تواصل معنا بأي طريقة تناسبك' : 'We are here to help! Contact us in any way that suits you'}</p>
-        </Motion.div>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-12">
-          {contactMethods.map((method, i) => (
-            <Motion.a 
-              key={i} 
-              href="#" 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.03, y: -5 }}
-              whileTap={{ scale: 0.98 }}
-              className="block p-4 sm:p-6 bg-[#0f2145]/40 border border-[#414d76]/30 rounded-2xl hover:border-[#d2a517]/30 transition-all group backdrop-blur-sm"
-            >
-              <div className={`w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r ${method.color} ${method.hover} rounded-xl flex items-center justify-center mb-3 sm:mb-4 mx-auto shadow-lg group-hover:shadow-[#d2a517]/25 transition-shadow`}>
-                <method.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <h4 className="text-white font-semibold mb-1 text-center text-sm sm:text-base">{method.title}</h4>
-              <p className="text-[#e9efff]/80 text-xs sm:text-sm text-center truncate">{method.value}</p>
-            </Motion.a>
-          ))}
-        </div>
-        
-        <Motion.div 
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="max-w-2xl mx-auto"
-        >
-          <form className="space-y-4 sm:space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <input 
-                  type="text" 
-                  placeholder={lang === 'ar' ? 'الاسم' : 'Name'} 
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all text-base"
-                />
-              </div>
-              <div>
-                <input 
-                  type="email" 
-                  placeholder={lang === 'ar' ? 'البريد الإلكتروني' : 'Email'} 
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all text-base"
-                />
-              </div>
-            </div>
-            <div>
-              <textarea 
-                rows={4} 
-                placeholder={lang === 'ar' ? 'رسالتك...' : 'Your Message...'} 
-                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all resize-none text-base"
-              />
-            </div>
-            <Motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 sm:py-4 bg-gradient-to-r from-[#d2a517] to-[#414d76] text-slate-900 font-bold rounded-xl hover:from-[#414d76] hover:to-[#d2a517] transition-all shadow-lg shadow-[#d2a517]/25 flex items-center justify-center gap-2 text-base"
-            >
-              <Send className="w-5 h-5" />
-              {lang === 'ar' ? 'إرسال الرسالة' : 'Send Message'}
-            </Motion.button>
-          </form>
-        </Motion.div>
-      </div>
-    </section>
-  );
-};
-
-// Telegram Section with enhanced animations
-const TelegramSection = ({ lang }) => {
-  const [ref, inView] = useScrollAnimation();
-  
-  return (
-    <section className="py-16 sm:py-20 bg-gradient-to-r from-[#d2a517] via-[#414d76] to-[#d2a517] relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <Motion.div 
-          className="absolute top-0 -start-20 w-40 h-40 sm:w-64 sm:h-64 bg-white/10 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <Motion.div 
-          className="absolute bottom-0 -end-20 w-40 h-40 sm:w-64 sm:h-64 bg-white/10 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, -30, 0],
-            y: [0, 20, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        
-        {/* Floating icons */}
-        {[...Array(6)].map((_, i) => (
-          <Motion.div
-            key={i}
-            className="absolute text-white/10"
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${20 + (i % 3) * 30}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 0.3,
-            }}
-          >
-            <BookOpen className="w-8 h-8 sm:w-12 sm:h-12" />
-          </Motion.div>
-        ))}
-      </div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <Motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}>
-          <Motion.div 
-            className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-5 sm:mb-6 backdrop-blur-sm"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <TelegramIcon />
-          </Motion.div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
-            {lang === 'ar' ? 'انضم لقناتنا على تيلجرام' : 'Join Our Telegram Channel'}
-          </h2>
-          <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
-            {lang === 'ar' ? 'احصل على أحدث الدورات والنصائح التعليمية مباشرة في هاتفك' : 'Get the latest courses and educational tips directly on your phone'}
-          </p>
-          
-          <Motion.a 
-            href="https://t.me/qimamsudanese" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#0f2145] font-bold rounded-full shadow-lg hover:shadow-xl transition-all text-base sm:text-lg"
-          >
-            <TelegramIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-            <span>{lang === 'ar' ? 'انضم الآن' : 'Join Now'}</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </Motion.a>
-          
-          <div className="flex justify-center gap-6 sm:gap-10 mt-8 sm:mt-12">
-            <Motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">10K+</div>
-              <div className="text-white/70 text-sm">{lang === 'ar' ? 'مشترك' : 'Subscribers'}</div>
-            </Motion.div>
-            <div className="w-px h-10 sm:h-12 bg-white/30 self-center" />
-            <Motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">50+</div>
-              <div className="text-white/70 text-sm">{lang === 'ar' ? 'محتوى' : 'Contents'}</div>
-            </Motion.div>
-            <div className="w-px h-10 sm:h-12 bg-white/30 self-center hidden sm:block" />
-            <Motion.div 
-              className="text-center hidden sm:block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">24/7</div>
-              <div className="text-white/70 text-sm">{lang === 'ar' ? 'نشط' : 'Active'}</div>
-            </Motion.div>
-          </div>
-        </Motion.div>
-      </div>
-    </section>
-  );
-};
-
-
 // Scroll to section helper
 const scrollToSection = (sectionId) => {
   const element = document.getElementById(sectionId);
@@ -580,9 +362,10 @@ const Home = () => {
   
   // Data
   const testimonials = [
-    { name: 'خالد Ibrahim', role: lang === 'ar' ? 'طالب هندسة' : 'Engineering Student', quote: lang === 'ar' ? 'أفضل منصة تعليمية للطلاب السودانيين. أنصح بها الجميع!' : 'The best educational platform for Sudanese students. I recommend it to everyone!' },
-    { name: 'Sara Ahmed', role: lang === 'ar' ? 'طالبة تقنية' : 'Tech Student', quote: lang === 'ar' ? 'المحتوى عالي الجودة والمدربين روائع. شكراً قمم!' : 'High quality content and great instructors. Thanks Qimam!' },
-    { name: 'Jamal Hussein', role: lang === 'ar' ? 'خريج حديث' : 'Recent Graduate', quote: lang === 'ar' ? 'ساعدتني في الحصول على وظيفتي الأولى. شكراً جزيلاً!' : 'Helped me get my first job. Thank you so much!' }
+    { name: 'رزان كرار', quote: 'قمم كانت سند حقيقي لينا، دعمتنا نفسيًا وساعدتنا نفهم الامتحانات بثقة.' },
+    { name: 'محمد هاشم', quote: 'في وقت كنت تايه وموقّف، قمم رجعتني للطريق وساعدتني أبدأ من جديد لحدي ما وصلت للامتحان وأنا واثق.' },
+    { name: 'رفاء عبد الرؤوف', quote: 'قمم اختصرت عليّ الطريق… خلّت المذاكرة أسهل وأوضح خصوصًا في فترة الضغط.' },
+    { name: 'مروة علي', quote: 'وسط النزوح وفقدان كل شيء، قمم كانت الحاجة الوحيدة الثابتة اللي قدرت أعتمد عليها.' }
   ];
   
   return (
@@ -593,9 +376,15 @@ const Home = () => {
         {/* ==================== HERO SECTION ==================== */}
         <section 
           ref={heroRef} 
-          className="relative min-h-screen flex items-center justify-center overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #191970 0%, #2a4a7f 40%, #3a5a8f 70%, #F5DEB3 100%)' }}
+          className="relative min-h-screen flex items-center justify-center overflow-hidden hero-parallax stars-bg"
+          style={{ 
+            backgroundImage: `url('/src/assets/looo.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
         >
+          <div className="hero-bg-overlay" />
           {/* Animated gradient overlay */}
           <Motion.div 
             className="absolute inset-0 opacity-30"
@@ -646,13 +435,13 @@ const Home = () => {
                     onClick={() => scrollToSection('about')}
                     whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(245,222,179,0.4)' }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#d2a517] to-[#414d76] text-slate-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all text-base sm:text-lg min-h-[48px] sm:min-h-[56px]"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-[#d2a517] text-slate-900 font-bold rounded-xl shadow-lg hover:bg-[#c49f16] active:scale-95 transition-all text-base sm:text-lg min-h-[48px] sm:min-h-[56px]"
                   >
                     {t('home.hero.cta_primary', { defaultValue: 'Start Learning' })}
                   </Motion.button>
                   
                   <Motion.button 
-                    onClick={() => scrollToSection('courses')}
+                    onClick={() => scrollToSection('services')}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all text-base sm:text-lg min-h-[48px] sm:min-h-[56px] flex items-center justify-center gap-2"
@@ -660,25 +449,6 @@ const Home = () => {
                     <PlayCircle className="w-5 h-5" />
                     {lang === 'ar' ? 'شاهد الفيديو' : 'Watch Video'}
                   </Motion.button>
-                </Motion.div>
-                
-                {/* Stats */}
-                <Motion.div 
-                  className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 pt-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                >
-                  {[
-                    { number: '50K+', label: lang === 'ar' ? 'طالب' : 'Students' },
-                    { number: '200+', label: lang === 'ar' ? 'دورة' : 'Courses' },
-                    { number: '50+', label: lang === 'ar' ? 'مدرب' : 'Instructors' },
-                  ].map((stat, i) => (
-                    <div key={i} className="text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-[#d2a517]">{stat.number}</div>
-                      <div className="text-white/60 text-xs sm:text-sm">{stat.label}</div>
-                    </div>
-                  ))}
                 </Motion.div>
               </Motion.div>
               
@@ -711,13 +481,13 @@ const Home = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <Motion.div 
-                        className="text-6xl font-bold text-white mb-2"
-                        animate={{ scale: [1, 1.05, 1] }}
+                        className="text-4xl sm:text-5xl font-extrabold text-white mb-2"
+                        animate={{ scale: [1, 1.02, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
-                        50K+
+                        {lang === 'ar' ? 'قمم' : 'Qimam'}
                       </Motion.div>
-                      <div className="text-[#d2a517] text-lg">{lang === 'ar' ? 'طالب نشط' : 'Active Students'}</div>
+                      <div className="text-[#d2a517] text-lg">{lang === 'ar' ? 'مكتبة الفيديو' : 'Video Library'}</div>
                     </div>
                   </div>
                   
@@ -784,7 +554,7 @@ const Home = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {[
                 { icon: PlayCircle, title: lang === 'ar' ? 'فيديوهات تعليمية' : 'Vision', text: t('about.vision.text', { defaultValue: '' }), color: 'from-[#d2a517] to-[#414d76]' },
-                { icon: MessageCircle, title: lang === 'ar' ? 'بوصلة قمم' : 'Mission', text: t('about.mission.text', { defaultValue: '' }), color: 'from-[#d2a517] to-[#414d76]' },
+                { icon: BookOpen, title: lang === 'ar' ? 'كتاب بوصلة قمم' : 'Mission', text: t('about.mission.text', { defaultValue: '' }), color: 'from-[#d2a517] to-[#414d76]' },
                 { icon: TelegramIcon, title: lang === 'ar' ? 'بوت تلجرام' : 'Telegram Bot', text: lang === 'ar' ? 'يساعدك على الوصول السريع إلى الدروس والمواد التعليمية بسهولة.' : 'Helps you quickly access lessons and learning materials with ease.', color: 'from-[#d2a517] to-[#414d76]' },
                 { icon: HelpCircle, title: lang === 'ar' ? 'الدعم والإرشاد' : 'Support & Guidance', text: lang === 'ar' ? 'نساعدك على تجاوز التوتر والضغط الدراسي من خلال نصائح وتوجيه مستمر.' : 'We help you overcome stress and academic pressure with ongoing tips and guidance.', color: 'from-[#d2a517] to-[#414d76]' }
               ].map((item, i) => (
@@ -838,12 +608,6 @@ const Home = () => {
             <TestimonialsCarousel items={testimonials} />
           </div>
         </section>
-        
-        {/* ==================== TELEGRAM SECTION ==================== */}
-        <TelegramSection lang={lang} />
-        
-        {/* ==================== CONTACT SECTION ==================== */}
-        <ContactSection lang={lang} />
       </main>
     </MotionContainer>
   );

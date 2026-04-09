@@ -1,5 +1,25 @@
-<<<<<<< HEAD
-# qu
+>>>>>>> 5f6dbca (clean project without node_modules)
+=======
+# منصة قمم التعليمية - Qumam Educational Platform
+
+منصة تعليمية احترافية مبنية بـ React + Tailwind CSS مع دعم اللغة العربية.
+
+## 🔗 الروابط
+- GitHub: [@owner](https://github.com/owner)
+- Demo: [Live Site](https://qumam.vercel.app)
+
+## 🚀 التشغيل
+```bash
+npm install
+npm run dev
+```
+
+## 📱 الميزات
+- تصميم متجاوب mobile-first
+- دعم اللغتين العربية والإنجليزية
+- Tailwind CSS مع animations متقدمة
+- React Router للتنقل
+
 =======
 
 ## 📞 Connect With Me

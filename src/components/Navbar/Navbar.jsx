@@ -5,6 +5,7 @@ import { motion, AnimatePresence, LazyMotion, domAnimation, useReducedMotion } f
 import FocusTrap from 'focus-trap-react';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import StarsBackground from '../StarsBackground.jsx';
 
 const MotionLink = motion(Link);
 
@@ -25,9 +26,9 @@ const Header = () => {
   const navItems = [
     { to: '#home', label: lang === 'ar' ? 'الرئيسية' : 'Home', sectionId: 'home' },
     { to: '#about', label: lang === 'ar' ? 'من نحن' : 'About', sectionId: 'about' },
+    { to: '#services', label: lang === 'ar' ? 'الفيديوهات' : 'Videos', sectionId: 'services' },
     { to: '#testimonials', label: lang === 'ar' ? 'آراء الطلاب' : 'Testimonials', sectionId: 'testimonials' },
-    { to: '#contact', label: lang === 'ar' ? 'التواصل' : 'Contact', sectionId: 'contact' },
-    { to: '#services', label: lang === 'ar' ? 'الفيديوهات' : 'Videos', sectionId: 'services' }
+    { to: '#contact', label: lang === 'ar' ? 'التواصل' : 'Contact', sectionId: 'contact' }
   ];
   const [isMobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -93,13 +94,7 @@ const Header = () => {
         >
           <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${isRtl ? 'dir-rtl' : ''}`}>
             <div className={`relative flex items-center justify-between h-full ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none lg:hidden">
-                <div className="relative w-16 h-12">
-                  <img src="/src/assets/start.png" alt="" className="absolute left-1/2 top-0 w-4 h-4 -translate-x-1/2" />
-                  <img src="/src/assets/start.png" alt="" className="absolute left-0 bottom-0 w-4 h-4" />
-                  <img src="/src/assets/start.png" alt="" className="absolute right-0 bottom-0 w-4 h-4" />
-                </div>
-              </div>
+<StarsBackground className="lg:hidden opacity-80" density={60} speed={0.2} />
 
               {/* Logo */}
               <MotionLink
@@ -109,22 +104,14 @@ const Header = () => {
                 onClick={(e) => handleNavClick(e, 'home')}
                 className="flex items-center gap-3 group"
               >
-                {/* Logo Image */}
-                <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg ring-2 ring-[#d2a517]/50 group-hover:ring-[#d2a517] transition-all duration-300">
-                  <img 
-                    src="/src/assets/logo.png" 
-                    alt="logo"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  <div className="hidden w-full h-full items-center justify-center bg-gradient-to-br from-[#0f2145] to-[#414d76]">
-                    <span className="text-[#d2a517] font-bold text-xl">ق</span>
-                  </div>
-                </div>
-                
+                <img
+                  src="/src/assets/logo.png"
+                  alt="logo"
+                  className="w-20 h-20 md:w-24 md:h-24 object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
               </MotionLink>
 
               {/* Navigation - Desktop */}
@@ -260,13 +247,14 @@ const Header = () => {
                 <div className="sticky top-0 bg-[#0f2145]/95 backdrop-blur-lg p-4 border-b border-[#414d76]/30">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg overflow-hidden shadow-lg bg-[#fff] flex items-center justify-center">
-                        <img
-                          src="/src/assets/logo.png"
-                          alt="logo"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                      <img
+                        src="/src/assets/logo.png"
+                        alt="logo"
+                        className="w-20 h-20 object-contain"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
                     </div>
                     <button 
                       ref={closeBtnRef} 
@@ -305,10 +293,7 @@ const Header = () => {
                   {/* Mobile Actions */}
                   <div className="mt-6 pt-6 border-t border-[#414d76]/30 space-y-3">
                     <button
-                      onClick={() => {
-                        setLang(lang === 'en' ? 'ar' : 'en');
-                        setMobileOpen(false);
-                      }}
+                      onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
                       className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-[#414d76]/30 text-[#e9efff] font-medium hover:bg-[#d2a517] hover:text-[#0f2145] transition-all duration-200"
                     >
                       <Globe className="w-5 h-5" /> 

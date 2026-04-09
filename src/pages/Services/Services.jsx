@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, LazyMotion, domAnimation, useInView, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Play, Users, Award, ArrowRight, ThumbsUp, Star } from 'lucide-react';
+import {
+Play, Star, ChevronDown, ArrowRight, Send, ThumbsUp, Users, Award,
+  Facebook, Instagram, Youtube, Linkedin
+} from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import imag1 from '../../assets/imag1.jpg';
 import runn from '../../assets/runn.jpg';
@@ -11,7 +14,7 @@ const TelegramIcon = () => (
   <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.654-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"/>
   </svg>
-);
+); 
 
 const MotionContainer = ({ children }) => (
   <LazyMotion features={domAnimation}>{children}</LazyMotion>
@@ -64,7 +67,6 @@ const VideoCard = ({ video, index }) => {
           </div>
 
           <div className="p-5 sm:p-6 flex-1 flex flex-col">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#d2a517] mb-2">{lang === 'ar' ? 'اختيار قمم' : 'Qumam Select'}</div>
             <h3 className="text-xl sm:text-2xl font-semibold text-white leading-snug">{video.title}</h3>
             <p className="mt-3 text-sm leading-6 text-slate-300 max-w-2xl" style={{ display: '-webkit-box', WebkitLineClamp: 4, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{video.description}</p>
             <div className="mt-4 grid gap-2 sm:grid-cols-3">
@@ -81,8 +83,7 @@ const VideoCard = ({ video, index }) => {
                 {lang === 'ar' ? 'طاقة تعليمية' : 'Learning energy'}
               </div>
             </div>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mt-auto">
-              <span className="inline-flex items-center justify-center rounded-full bg-white/5 px-3 py-2 text-xs font-medium text-[#f8f0c3] backdrop-blur-sm">{lang === 'ar' ? 'من' : 'From'} قمم</span>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end mt-auto">
               <motion.span whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d2a517] px-5 py-2 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-[#f3db6c] shadow-lg shadow-[#d2a517]/20">
                 {video.cta}
                 <ArrowRight className="w-4 h-4" />
@@ -115,6 +116,97 @@ const FAQItem = ({ question, answer, index }) => {
   );
 };
 
+const ContactSection = ({ lang }) => {
+  const [ref, inView] = useScrollAnimation();
+  const contactMethods = [
+    { icon: Facebook, title: lang === 'ar' ? 'فيسبوك' : 'Facebook', value: 'http://facebook.com/qimamplatform', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
+    { icon: Instagram, title: lang === 'ar' ? 'إنستجرام' : 'Instagram', value: 'https://www.instagram.com/gimam.platform?igsh=dWJ1dDF4ZjBnZG8z', color: 'from-[#414d76] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
+    { icon: Youtube, title: lang === 'ar' ? 'يوتيوب' : 'YouTube', value: 'http://www.youtube.com/@qimam.platform', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
+    { icon: Linkedin, title: lang === 'ar' ? 'لينكد إن' : 'LinkedIn', value: 'https://www.linkedin.com/company/%D9%82%D9%85%D9%85/', color: 'from-[#d2a517] to-[#414d76]', hover: 'hover:from-[#414d76] hover:to-[#d2a517]' },
+  ];
+
+  return (
+    <section id="contact" className="py-16 sm:py-20 bg-gradient-to-b from-[#0f2145] via-[#141f3b] to-[#0f2145] relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 sm:mb-12"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">{lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}</h2>
+          <p className="text-[#e9efff]/80 text-base sm:text-lg max-w-2xl mx-auto">{lang === 'ar' ? 'نحن هنا لمساعدتك! تواصل معنا بأي طريقة تناسبك' : 'We are here to help! Contact us in any way that suits you'}</p>
+        </motion.div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-12">
+          {contactMethods.map((method, i) => (
+            <motion.a 
+              key={i} 
+              href={method.value} target="_blank" rel="noopener noreferrer" 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ scale: 1.03, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="block p-4 sm:p-6 bg-[#0f2145]/40 border border-[#414d76]/30 rounded-2xl hover:border-[#d2a517]/30 transition-all group backdrop-blur-sm"
+            >
+              <div className={`w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r ${method.color} ${method.hover} rounded-xl flex items-center justify-center mb-3 sm:mb-4 mx-auto shadow-lg group-hover:shadow-[#d2a517]/25 transition-shadow`}>
+                <method.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+              </div>
+              <h4 className="text-white font-semibold mb-1 text-center text-sm sm:text-base">{method.title}</h4>
+            </motion.a>
+          ))}
+        </div>
+        
+        <motion.div 
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="max-w-2xl mx-auto"
+        >
+          <form className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div>
+                <input name="name"
+                  type="text" 
+                  placeholder={lang === 'ar' ? 'الاسم' : 'Name'} 
+                  required
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all text-base"
+                />
+              </div>
+              <div>
+                <input name="email"
+                  type="email" 
+                  placeholder={lang === 'ar' ? 'البريد الإلكتروني' : 'Email'} 
+                  required
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all text-base"
+                />
+              </div>
+            </div>
+            <div>
+              <textarea name="message"
+                rows={4} 
+                placeholder={lang === 'ar' ? 'رسالتك...' : 'Your Message...'} 
+                required
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#0f2145]/70 border border-[#414d76] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#d2a517] focus:ring-2 focus:ring-[#d2a517]/20 transition-all resize-none text-base"
+              />
+            </div>
+            <motion.button type="submit"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-3 sm:py-4 bg-gradient-to-r from-[#d2a517] to-[#414d76] text-slate-900 font-bold rounded-xl hover:from-[#414d76] hover:to-[#d2a517] transition-all shadow-lg shadow-[#d2a517]/25 flex items-center justify-center gap-2 text-base"
+            >
+              <Send className="w-5 h-5" />
+              {lang === 'ar' ? 'إرسال الرسالة' : 'Send Message'}
+            </motion.button>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const Services = () => {
   const { lang } = useLanguage();
   
@@ -123,7 +215,7 @@ const Services = () => {
       id: 1,
       thumbnail: imag1,
       title: lang === 'ar' ? 'وداعما لتراكم الدروس – استراتيجيات الإنجاز الذكي' : 'Supportive lesson backlog – smart achievement strategies',
-      description: lang === 'ar' ? 'تعلم كيف تنجز مهامك بفاعلية وتتحلّص من تراكم الدروس بأحدث الطرق العلمية.' : 'Learn how to complete your tasks effectively and clear your lesson backlog with modern scientific methods.',
+      description: lang === 'ar' ? 'تعلم كيف تنجز مهامك بفاعلية وتتخلّص من تراكم الدروس بأحدث الطرق العلمية.' : 'Learn how to complete your tasks effectively and clear your lesson backlog with modern scientific methods.',
       url: 'https://youtu.be/Xk3sEXk78lY?si=AyjqSRkWijkeL2_M',
       cta: lang === 'ar' ? 'شاهد الآن' : 'Watch Now'
     },
@@ -154,9 +246,11 @@ const Services = () => {
   ];
   
   const faqs = [
-    { question: lang === 'ar' ? 'هل الفيديوهات مجانية؟' : 'Are the videos free?', answer: lang === 'ar' ? 'نعم، جميع الفيديوهات مجانية على يوتيوب.' : 'Yes, all videos are free on YouTube.' },
-    { question: lang === 'ar' ? 'كيف أشاهد الفيديوهات؟' : 'How do I watch videos?', answer: lang === 'ar' ? 'اضغط على البطاقة وسيتم توجيهك ليوتيوب.' : 'Click on the card and you will be redirected to YouTube.' },
-    { question: lang === 'ar' ? 'هل توجد شهادات؟' : 'Are there certificates?', answer: lang === 'ar' ? 'نعم، احصل على شهادة بعد اجتياز الاختبارات.' : 'Yes, get a certificate after passing quizzes.' }
+    { question: 'ما هي منصة قمم؟', answer: 'قمم منصة تعليمية تهدف إلى دعم طلاب الشهادة السودانية من خلال فيديوهات تعليمية، وكتاب بوصلة قمم، بالإضافة إلى أدوات تساعد على تنظيم المذاكرة وتحقيق أفضل النتائج.' },
+    { question: 'هل المحتوى مجاني؟', answer: 'نعم، نوفر محتوى مجانيًا يشمل الفيديوهات التعليمية، والنصائح، والمواد التي تساعدك على التفوق.' },
+    { question: 'كيف أبدأ؟', answer: 'يمكنك البدء بمشاهدة الفيديوهات التعليمية مباشرة، أو استخدام البوت على Telegram للوصول إلى المحتوى بسهولة.' },
+    { question: 'ما هو كتاب بوصلة قمم؟', answer: 'هو دليل عملي يساعدك على تنظيم المذاكرة، وفهم أفضل طرق الدراسة، والاستعداد للامتحانات بثقة.' },
+    { question: 'كيف أستخدم البوت؟', answer: 'يمكنك الدخول إلى البوت عبر Telegram، وستجد فيه جميع الروابط والمواد التعليمية مرتبة وسهلة الوصول.' }
   ];
   
   const stats = [
@@ -202,6 +296,8 @@ const Services = () => {
           </div>
         </section>
         
+        <ContactSection lang={lang} />
+        
         <section className="py-20 bg-gradient-to-r from-[#414d76] via-[#0f2145] to-[#414d76] relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
@@ -212,7 +308,7 @@ const Services = () => {
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6"><TelegramIcon /></div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{lang === 'ar' ? 'انضم لقناتنا على تيلجرام' : 'Join Our Telegram Channel'}</h2>
               <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">{lang === 'ar' ? 'احصل على أحدث المحتوى' : 'Get the latest content'}</p>
-              <motion.a href="https://t.me/qimamsudanese" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-flex items-center gap-3 px-8 py-4 bg-white text-cyan-600 font-bold rounded-full shadow-lg hover:shadow-xl transition-all">
+              <motion.a href="https://t.me/gimam22" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-flex items-center gap-3 px-8 py-4 bg-white text-cyan-600 font-bold rounded-full shadow-lg hover:shadow-xl transition-all">
                 <span>{lang === 'ar' ? 'انضم الآن' : 'Join Now'}</span>
                 <ArrowRight className="w-5 h-5" />
               </motion.a>

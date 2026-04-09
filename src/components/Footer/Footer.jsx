@@ -69,7 +69,7 @@ export default function Footer({ scrollToSection }) {
   const quickLinks = [
     { label: lang === 'ar' ? 'الرئيسية' : 'Home', href: '#home' },
     { label: lang === 'ar' ? 'من نحن' : 'About', href: '#about' },
-    { label: lang === 'ar' ? 'قصص النجاح' : 'Success Stories', href: '#projects' },
+{ label: lang === 'ar' ? 'آراء الطلاب' : 'Testimonials', href: '#testimonials' },
     { label: lang === 'ar' ? 'تواصل معنا' : 'Contact', href: '#contact' },
   ];
 
@@ -91,17 +91,13 @@ export default function Footer({ scrollToSection }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-1">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/" className="flex items-center gap-2 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#d2a517] to-[#414d76] rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-white">ق</span>
-                </div>
-                <span className="text-2xl font-bold">
-                  <span className="text-[#d2a517]">قمم</span>
-                  <span className="text-white">السودانية</span>
-                </span>
+              <Link to="/" className="flex items-center gap-3 mb-4">
+                <img src="/src/assets/logo.png" alt="logo" className="w-16 h-16 object-contain" />
               </Link>
               <p className="text-[#e9efff]/80 mb-6 leading-relaxed">
-                {lang === 'ar' ? 'منصة تعليمية رائدة توفر دورات مجانية في الهندسة والتكنولوجيا للطلاب السودانيين.' : 'A leading educational platform providing free courses in engineering and technology for Sudanese students.'}
+                {lang === 'ar'
+                  ? 'تعلّم واكتشف معنا عالمًا من الدروس المجانية، والجلسات المباشرة، وبرامج الإرشاد التي تساعدك على تطوير مهاراتك وتحقيق طموحك أينما كنت.'
+                  : 'Learn and discover with us a world of free lessons, live sessions, and mentorship programs that help you build skills and reach your goals wherever you are.'}
               </p>
               <div className="space-y-3">
                 {features.map((feature, i) => (
