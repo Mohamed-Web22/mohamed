@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext.jsx';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
+import logo from '/images/logo.png';
 import { 
   Mail, Phone, MapPin, ArrowRight, Clock, Users, BookOpen,
   Award, Star, MessageCircle
@@ -57,13 +59,13 @@ export default function Footer({ scrollToSection }) {
     }
   };
 
-  const socialLinks = [
-    { icon: TelegramIcon, label: 'Telegram', href: 'https://t.me/qimamsudanese', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
-    { icon: YoutubeIcon, label: 'YouTube', href: '#', color: 'bg-[#d2a517] hover:bg-[#414d76]' },
-    { icon: FacebookIcon, label: 'Facebook', href: '#', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
-    { icon: TwitterIcon, label: 'Twitter', href: '#', color: 'bg-[#d2a517] hover:bg-[#414d76]' },
-    { icon: InstagramIcon, label: 'Instagram', href: '#', color: 'bg-[#d2a517] hover:bg-[#414d76]' },
-    { icon: LinkedInIcon, label: 'LinkedIn', href: '#', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
+const socialLinks = [
+    { icon: TelegramIcon, label: 'Telegram', href: 'https://t.me/gimam22', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
+    { icon: FacebookIcon, label: 'Facebook', href: 'http://facebook.com/qimamplatform', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
+    { icon: YoutubeIcon, label: 'YouTube', href: 'http://www.youtube.com/@qimam.platform', color: 'bg-[#d2a517] hover:bg-[#414d76]' },
+    { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/gimam.platform?igsh=dWJ1dDF4ZjBnZG8z', color: 'bg-[#d2a517] hover:bg-[#414d76]' },
+    { icon: WhatsAppIcon, label: 'WhatsApp', href: 'https://whatsapp.com/channel/0029Vb2pu5hIXnls5n6FgF2o', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
+    { icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/company/%D9%82%D9%85%D9%85/', color: 'bg-[#414d76] hover:bg-[#d2a517]' },
   ];
 
   const quickLinks = [
@@ -90,12 +92,7 @@ export default function Footer({ scrollToSection }) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-1">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/" className="flex items-center gap-3 mb-4">
-src="/images/logo.png" alt="logo" className="w-16 h-16 object-contain" />
-
-              </Link>
-              <p className="text-[#e9efff]/80 mb-6 leading-relaxed">
+<motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>              <Link to="/" className="flex items-center gap-3 mb-4">               <img src={logo} className="w-20 h-20 object-contain" />              </Link>            <p className="text-[#e9efff]/80 mb-6 leading-relaxed">
                 {lang === 'ar'
                   ? 'تعلّم واكتشف معنا عالمًا من الدروس المجانية، والجلسات المباشرة، وبرامج الإرشاد التي تساعدك على تطوير مهاراتك وتحقيق طموحك أينما كنت.'
                   : 'Learn and discover with us a world of free lessons, live sessions, and mentorship programs that help you build skills and reach your goals wherever you are.'}

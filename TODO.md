@@ -1,13 +1,10 @@
-# Fix React Errors in Qumam Project
+# Task: Update social media links in Footer "تابعنا" section
 
-## Progress Tracker
-- [x] 1. Analyze errors and files (Services.jsx, Navbar.jsx)
-- [ ] 2. Create/update TODO.md ✅
-- [x] 3. Edit src/pages/Services/Services.jsx (add missing Users, Award imports) ✅
+## Steps:
+- [ ] Step 1: Add WhatsAppIcon component to Footer.jsx
+- [ ] Step 2: Update socialLinks array with correct URLs and replace Twitter with WhatsApp
+- [ ] Step 3: Verify rendering and links work
+- [ ] Step 4: Complete task
 
-- [ ] 4. Test app reload (Vite dev server)
-- [ ] 5. Verify no console errors/crash in Services
-- [ ] 6. Check Navbar warning resolved
-- [x] 7. Complete task
+Current status: Starting implementation.
 
-✅ **Task complete:** Reload app (`npm run dev`), navigate to Services, check console for errors. Navbar warning non-critical (framer-motion internal).
