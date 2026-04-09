@@ -377,12 +377,13 @@ const Home = () => {
         <section 
           ref={heroRef} 
           className="relative min-h-screen flex items-center justify-center overflow-hidden hero-parallax stars-bg"
-          style={{ 
-            backgroundImage: `url('/src/assets/looo.jpg')`,
+style={{ 
+backgroundImage: `url('/images/looo.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
           }}
+
         >
           <div className="hero-bg-overlay" />
           {/* Animated gradient overlay */}

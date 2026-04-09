@@ -92,7 +92,8 @@ export default function Footer({ scrollToSection }) {
           <div className="lg:col-span-1">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <Link to="/" className="flex items-center gap-3 mb-4">
-                <img src="/src/assets/logo.png" alt="logo" className="w-16 h-16 object-contain" />
+src="/images/logo.png" alt="logo" className="w-16 h-16 object-contain" />
+
               </Link>
               <p className="text-[#e9efff]/80 mb-6 leading-relaxed">
                 {lang === 'ar'

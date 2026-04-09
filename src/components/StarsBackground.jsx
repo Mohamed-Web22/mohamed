@@ -7,7 +7,7 @@ const StarsBackground = ({ className = '', density = 70, speed = 0.6 }) => {
 
   const loadStarImage = useCallback(() => {
     const img = new Image();
-    img.src = '/src/assets/start.png';  // Use 'start.png' as specified
+img.src = '/images/start.png';  // Use 'start.png' as specified
     img.onload = () => {
       starImgRef.current = img;
       setImgLoaded(true);

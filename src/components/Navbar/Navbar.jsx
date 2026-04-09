@@ -105,9 +105,10 @@ const Header = () => {
                 className="flex items-center gap-3 group"
               >
                 <img
-                  src="/src/assets/logo.png"
+src="/images/logo.png"
                   alt="logo"
                   className="w-20 h-20 md:w-24 md:h-24 object-contain"
+
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
