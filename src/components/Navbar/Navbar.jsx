@@ -249,12 +249,14 @@ src="/images/logo.png"
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <img
-                        src="/src/assets/logo.png"
+
+                        src="/images/logo.png"
                         alt="logo"
                         className="w-20 h-20 object-contain"
                         onError={(e) => {
                           e.target.style.display = 'none';
                         }}
+
                       />
                     </div>
                     <button 
