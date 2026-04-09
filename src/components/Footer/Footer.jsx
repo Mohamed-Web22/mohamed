@@ -154,7 +154,7 @@ export default function Footer({ scrollToSection }) {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-[#414d76]">
           <div className="text-[#e9efff]/80 text-sm text-center md:text-right">
-            <p>© {new Date().getFullYear()} {lang === 'ar' ? 'قمم السودانية' : 'Qimam Sudanese'}. {lang === 'ar' ? 'جميع الحقوق محفوظة' : 'All rights reserved.'}</p>
+            <p>© 2026 {lang === 'ar' ? 'منصة قمم التعليمية' : 'Qimam Educational Platform'}. {lang === 'ar' ? 'جميع الحقوق محفوظة' : 'All rights reserved.'}</p>
           </div>
           <div className="flex items-center gap-6 text-sm text-[#e9efff]/80">
             <a href="#" className="hover:text-[#d2a517] transition-colors">{lang === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>
