@@ -1,10 +1,11 @@
-# Task: Update social media links in Footer "تابعنا" section
+# TODO - Remove Stars & Optimize Performance
 
-## Steps:
-- [ ] Step 1: Add WhatsAppIcon component to Footer.jsx
-- [ ] Step 2: Update socialLinks array with correct URLs and replace Twitter with WhatsApp
-- [ ] Step 3: Verify rendering and links work
-- [ ] Step 4: Complete task
-
-Current status: Starting implementation.
+- [x] 1. Read relevant files (StarsBackground.jsx, Home.jsx, Navbar.jsx, index.css)
+- [ ] 2. Remove StarsBackground usage from Navbar.jsx
+- [ ] 3. Remove StarsBackground import and FloatingOrbs from Home.jsx
+- [ ] 4. Remove stars-bg CSS class from hero section in Home.jsx
+- [ ] 5. Delete StarsBackground.jsx component file
+- [ ] 6. Clean index.css - remove all stars-related animations and pseudo-elements
+- [ ] 7. Add performance CSS optimizations (content-visibility, reduced-motion)
+- [ ] 8. Verify build/dev server works
 

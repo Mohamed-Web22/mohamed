@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import StarsBackground from '../../components/StarsBackground.jsx';
 import { useRef, useEffect, useState } from 'react';
 import { motion as Motion, LazyMotion, domAnimation, useInView, AnimatePresence } from 'framer-motion';
 import {
@@ -99,85 +98,15 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }) {
   );
 }
 
-// Floating Orbs Background
-const FloatingOrbs = () => {
-  const canvasRef = useRef(null);
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let animationFrame;
-    let particles = [];
-    
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    const createParticles = () => {
-      particles = [];
-      const count = Math.min(50, Math.floor(window.innerWidth / 15));
-      
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 3 + 1,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          alpha: Math.random() * 0.4 + 0.1,
-          color: Math.random() > 0.5 ? '#F5DEB3' : '#d2a517'
-        });
-      }
-    };
-    
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      });
-      
-      animationFrame = requestAnimationFrame(animate);
-    };
-    
-    resize();
-    createParticles();
-    animate();
-    
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
-    });
-    
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, []);
-  
-  return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
-    />
-  );
-};
+// Lightweight static background decoration (CSS-based, no canvas)
+const StaticGradientBg = () => (
+  <div 
+    className="fixed inset-0 pointer-events-none z-0"
+    style={{
+      background: 'radial-gradient(ellipse at 20% 30%, rgba(210,165,23,0.03) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(65,77,118,0.03) 0%, transparent 50%)',
+    }}
+  />
+);
 
 // Success Story Card
 const SuccessStoryCard = ({ story, index, lang }) => {
@@ -370,18 +299,18 @@ const Home = () => {
   
   return (
     <MotionContainer>
-      <FloatingOrbs />
+      <StaticGradientBg />
       
       <main className="relative z-10">
         {/* ==================== HERO SECTION ==================== */}
         <section 
           ref={heroRef} 
-          className="relative min-h-screen flex items-center justify-center overflow-hidden hero-parallax stars-bg"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden hero-parallax"
 style={{ 
-backgroundImage: `url('/images/looo.jpg')`,
+            backgroundImage: `url('/images/looo.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'scroll'
           }}
 
         >

@@ -5,7 +5,6 @@ import { motion, AnimatePresence, LazyMotion, domAnimation, useReducedMotion } f
 import FocusTrap from 'focus-trap-react';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import StarsBackground from '../StarsBackground.jsx';
 
 const MotionLink = motion(Link);
 
@@ -94,8 +93,6 @@ const Header = () => {
         >
           <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${isRtl ? 'dir-rtl' : ''}`}>
             <div className={`relative flex items-center justify-between h-full ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
-<StarsBackground className="lg:hidden opacity-80" density={60} speed={0.2} />
-
               {/* Logo */}
               <MotionLink
                 to="/#home"
